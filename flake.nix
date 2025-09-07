@@ -185,6 +185,13 @@
               })
               { inherit system; };
             gnumake381 = oldmake.gnumake381;
+            oldgcc = import
+              (builtins.fetchTarball {
+                url = "https://github.com/NixOS/nixpkgs/archive/refs/tags/23.11.tar.gz";
+                sha256 = "1ndiv385w1qyb3b18vw13991fzb9wg4cl21wglk89grsfsnra41k";
+              })
+              { inherit system; };
+            gcc7Stdenv = oldgcc.gcc7Stdenv;
           in
 
           gcc7Stdenv.mkDerivation {
